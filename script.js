@@ -1,4 +1,4 @@
-// Play button for music
+// Play Music
 const btn = document.getElementById("playBtn");
 const music = document.getElementById("bgMusic");
 btn.addEventListener("click", () => {
@@ -9,10 +9,12 @@ btn.addEventListener("click", () => {
 // Popup Zoom
 const popup = document.getElementById("popup");
 const popupImg = document.getElementById("popupImg");
+
 document.querySelectorAll(".zoom").forEach(img => {
   img.addEventListener("click", () => {
     popupImg.src = img.src;
     popup.style.display = "flex";
   });
 });
+
 popup.addEventListener("click", () => popup.style.display = "none");
