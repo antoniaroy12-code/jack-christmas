@@ -3,36 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Merry Christmas, My Forever 🎁</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<title>For My Forever Baby 🎄❤️</title>
 
+<style>
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: #000;
+        color: white;
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    header {
+        padding: 20px 10px;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    .main-img {
+        width: 85%;
+        border-radius: 18px;
+        margin-top: 15px;
+        box-shadow: 0px 0px 25px rgba(255,255,255,0.4);
+    }
+
+    .gallery {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .gallery img {
+        width: 28%;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        box-shadow: 0px 0px 15px rgba(255,255,255,0.2);
+    }
+
+    .gallery img:hover {
+        transform: scale(1.1);
+    }
+
+    /* Fullscreen popup */
+    #popup {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.9);
+        align-items: center;
+        justify-content: center;
+    }
+
+    #popup img {
+        width: 90%;
+        border-radius: 15px;
+    }
+
+    #popup:active {
+        display: none;
+    }
+
+    .message {
+        margin: 20px 10%;
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+
+    /* Snow */
+    .snow {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+    }
+</style>
+</head>
 <body>
 
-<!-- Snow Container -->
-<div class="snow-container"></div>
+<div class="snow" id="snow"></div>
 
-<header>
-  <h1>Merry Christmas My Forever 💞</h1>
-  <p>No distance can dim what we have. ✨</p>
-</header>
+<header>Made for my forever baby ✨</header>
 
-<div class="main-img">
-  <img src="https://i.postimg.cc/W3Fgs395/MAIN-IMG.jpg" alt="My Baby">
+<img class="main-img" src="https://i.postimg.cc/W3Fgs395/MAIN-IMG.jpg">
+
+<div class="message">
+    Merry Christmas my love 🎄❤️<br>
+    I hope you feel the magic I feel when I think about you ✨
 </div>
 
-<h2>Some of my favorite views 😘</h2>
+<!-- Popup Viewer -->
+<div id="popup" onclick="this.style.display='none'">
+    <img id="popupImg">
+</div>
 
+<!-- Updated small images layout -->
 <div class="gallery">
-  <img src="https://i.postimg.cc/3xtvppV9/CHRISTMAS-WEB.jpg" alt="">
-  <img src="https://i.postimg.cc/v87Dff6T/CHRISTMAS-WEB-2.jpg" alt="">
-  <img src="https://i.postimg.cc/rFFy4bkv/CM-GGG.jpg" alt="">
+    <img src="https://i.postimg.cc/3xtvppV9/CHRISTMAS-WEB.jpg" onclick="openPopup(this.src)">
+    <img src="https://i.postimg.cc/v87Dff6T/CHRISTMAS-WEB-2.jpg" onclick="openPopup(this.src)">
+    <img src="https://i.postimg.cc/rFFy4bkv/CM-GGG.jpg" onclick="openPopup(this.src)">
 </div>
 
-<audio id="bgMusic" autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_6a99771362.mp3">
+<audio autoplay loop>
+    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Its_time_for_Adventure/Komiku_-_12_-_Snowing.mp3">
 </audio>
 
-<script src="script.js"></script>
+<script>
+function openPopup(src) {
+    document.getElementById('popupImg').src = src;
+    document.getElementById('popup').style.display = 'flex';
+}
+
+// Snow animation
+const snow = document.getElementById('snow');
+for(let i=0; i<70; i++){
+    let s = document.createElement('div');
+    s.innerHTML = '❄';
+    s.style.position = 'absolute';
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.animation = `fall ${3+Math.random()*6}s linear infinite`;
+    s.style.fontSize = Math.random()*18 + 'px';
+    snow.appendChild(s);
+}
+</script>
+
+<style>
+@keyframes fall {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(110vh);}
+}
+</style>
+
 </body>
 </html>
