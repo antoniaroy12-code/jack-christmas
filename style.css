@@ -39,9 +39,7 @@ header h1 {
   border: none;
   padding: 12px 22px;
   border-radius: 25px;
-  font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 0 12px #ff7e9a;
   margin-bottom: 25px;
 }
 
@@ -52,7 +50,6 @@ header h1 {
   gap: 12px;
   flex-wrap: wrap;
 }
-
 .gallery img {
   width: 100px;
   border-radius: 12px;
@@ -60,15 +57,12 @@ header h1 {
   transition: .3s;
   box-shadow: 0 0 15px rgba(255,160,180,0.4);
 }
-
 .gallery img.tall {
   height: 160px;
   object-fit: cover;
 }
-
 .gallery img:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(255,120,140,0.8);
 }
 
 /* Popup */
@@ -80,7 +74,6 @@ header h1 {
   background:rgba(0,0,0,0.92);
   justify-content:center;
   align-items:center;
-  z-index:500;
 }
 .popup img {
   width:90%;
@@ -88,19 +81,28 @@ header h1 {
   border-radius:12px;
 }
 
-/* Snow */
-body::before {
-  content:"";
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  pointer-events:none;
-  background-image:url("https://i.postimg.cc/TP4b3RtC/snow.png");
-  animation:snow 12s linear infinite;
-  opacity:0.65;
+/* Snow Animation */
+.snowflakes {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  top: 0; left: 0;
+  z-index: 9999;
 }
-
-@keyframes snow {
-  0% {background-position:0 -1000px;}
-  100% {background-position:0 0;}
+.snowflake {
+  position: absolute;
+  top: -10%;
+  color: #fff;
+  font-size: 1.3rem;
+  opacity: 0.8;
+  animation: fall 10s linear infinite, sway 4s ease-in-out infinite alternate;
+}
+@keyframes fall {
+  0% { transform: translateY(-10vh) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
+@keyframes sway {
+  0% { transform: translateX(-20px); }
+  100% { transform: translateX(20px); }
 }
